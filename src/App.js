@@ -1,29 +1,23 @@
-import './App.css';
-import {BrowserRouter, Link, Routes, Route} from 'react-router-dom';
-
+import "./App.css";
+import { Routes, Route, Link } from "react-router-dom";
+import { Home, Movies, AddMovie, UhOh404 } from "./pages";
 
 function App() {
   return (
-    <BrowserRouter>
-      <ul>
-        <li><Link to="/movies">Movies</Link></li>
-        <li><Link to="/add">Add a Movie</Link></li>
-      </ul>  
+    <>
+      <h1>Movie Reviews</h1>
+        <nav>
+          <Link to="">Home | </Link>
+          <Link to="movies">Movies | </Link>
+          <Link to="add">Add Movies</Link>
+        </nav>
       <Routes>
-        <Route path="/movies">
-          <Home/>
-        </Route> 
-        <Route path="/movies">
-          <Movies/>
-        </Route>  
-        <Route path="/add">
-          <AddMovie/>
-        </Route>
-        <Route path="*">
-          <UhOh404/>
-        </Route>   
+        <Route path="/" element={<Home />} />
+        <Route path="/movies" element={<Movies />} />
+        <Route path="/add" element={<AddMovie />} />
+        <Route path="*" element={<UhOh404 />} />
       </Routes>
-    </BrowserRouter>
+    </>
   );
 }
 
