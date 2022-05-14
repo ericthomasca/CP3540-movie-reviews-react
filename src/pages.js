@@ -8,17 +8,19 @@ export function Home() {
         );
 }
 
-export function Movies() {
+export function Reviews() {
+    const posterPrefix = "https://image.tmdb.org/t/p/w600_and_h900_bestv2";
     return (
         <div>
             <h1>
-                This is the movies page
+                This is the movies page { posterPrefix }
             </h1>
+            <img src="img_girl.jpg" alt="Girl in a jacket"></img>
         </div>
     );
 }
 
-export function AddMovie() {
+export function AddReview() {
     return (
         <div>
             <h1>

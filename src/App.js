@@ -1,6 +1,6 @@
 import "./App.css";
 import { Routes, Route, Link } from "react-router-dom";
-import { Home, Movies, AddMovie, UhOh404 } from "./pages";
+import { Home, Reviews, AddReview, UhOh404 } from "./pages";
 
 function App() {
   return (
@@ -8,13 +8,13 @@ function App() {
       <h1>Movie Reviews</h1>
         <nav>
           <Link to="">Home | </Link>
-          <Link to="movies">Movies | </Link>
-          <Link to="add">Add Movies</Link>
+          <Link to="reviews">Reviews | </Link>
+          <Link to="add">Add Review</Link>
         </nav>
       <Routes>
         <Route path="/" element={<Home />} />
-        <Route path="/movies" element={<Movies />} />
-        <Route path="/add" element={<AddMovie />} />
+        <Route path="/reviews" element={<Reviews />} />
+        <Route path="/add" element={<AddReview />} />
         <Route path="*" element={<UhOh404 />} />
       </Routes>
     </>
