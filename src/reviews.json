@@ -1,5 +1,6 @@
 [
     {
+        "id": 1,
         "name": "Howard The Duck",
         "release_date": "1986-08-01",
         "actors": [
@@ -12,6 +13,7 @@
         "rating": 4
     },
     {
+        "id": 2,
         "name": "Toys",
         "release_date": "1992-12-18",
         "actors": [
@@ -25,6 +27,7 @@
         "rating": 3
     },
     {
+        "id": 3,
         "name": "Earth Girls Are Easy",
         "release_date": "1988-09-08",
         "actors": [
@@ -37,6 +40,7 @@
         "rating": 4
     },
     {
+        "id": 4,
         "name": "Kids in the Hall: Brain Candy",
         "release_date": "1996-04-02",
         "actors": [
@@ -50,6 +54,7 @@
         "rating": 5
     },
     {
+        "id": 5,
         "name": "Grandma's Boy",
         "release_date": "1996-08-08",
         "actors": [
