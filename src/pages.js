@@ -36,7 +36,28 @@ export function Home() {
 export function AddReview() {
   return (
     <div>
-      <h2>This is the add movie page</h2>
+      <form>
+        <label>Title: </label><br></br>
+        <input type="text"></input><br></br>
+        <label>Release Date: (YYYY-MM-DD) </label><br></br>
+        <input type="text"></input><br></br>
+        <label>Actors: </label><br></br>
+        <input type="text"></input><br></br>
+        <label>Poster: </label>
+        <select>
+            <option value="/5cZySBvy41eHTD5LyQn48aP444k.jpg">Example 1</option>
+            <option value="/5mq8J11266ZL7HCOwDGXoaU6eIO.jpg">Example 2</option>
+        </select><br></br>
+        <label>Rating: </label>
+        <select>
+            <option value="1">1</option>
+            <option value="2">2</option>
+            <option value="3">3</option>
+            <option value="4">4</option>
+            <option value="5">5</option>
+        </select><br></br>
+        <input type="submit" value="Submit"></input>
+      </form>
     </div>
   );
 }
