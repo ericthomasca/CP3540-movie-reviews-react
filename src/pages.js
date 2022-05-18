@@ -34,7 +34,7 @@ export function Home() {
               <td>
                 <button
                   onClick={reviewData.filter(
-                    (review) => review.name !== true
+                    (review) => review.checked !== true
                   )}
                 >
                   Remove
