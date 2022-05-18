@@ -1,7 +1,4 @@
 import reviewData from "./reviews.json";
-// import { ReviewList } from "./Reviews";
-import { useState, useEffect } from "react";
-import { Checkbox } from "./Checkbox";
 
 export function Home() {
   const posterPrefix = "https://image.tmdb.org/t/p/original";
