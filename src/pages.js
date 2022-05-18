@@ -1,5 +1,5 @@
 import reviewData from "./reviews.json";
-import { useState, useEffect } from "react";
+// import { useState, useEffect } from "react";
 import { Checkbox } from "./Checkbox";
 
 export function Home() {
