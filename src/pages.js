@@ -1,43 +1,29 @@
 import reviewData from "./reviews.json";
+import { useState, useEffect } from "react";
+import { Checkbox } from "./Checkbox";
 
 export function Home() {
   const posterPrefix = "https://image.tmdb.org/t/p/original";
 
+  const removeReview = () => {
+    reviewData.filter((review) => review.checked !== true);
+  };
+
   return (
     <div>
-      <table>
-        <thead>
-          <tr>
-            <th>Movie</th>
-            <th>Release Date</th>
-            <th>Actors</th>
-            <th>Poster</th>
-            <th>Rating</th>
-            <th>Remove?</th>
-          </tr>
-        </thead>
-        <tbody>
-          {reviewData.map((review) => (
-            <tr key={review.id}>
-              <td>{review.name}</td>
-              <td>{review.release_date}</td>
-              <td>{review.actors.join(", ")}</td>
-              <td>
-                <img
-                  src={posterPrefix + review.poster}
-                  alt="poster"
-                  height="150"
-                  width="100"
-                ></img>
-              </td>
-              <td>{review.rating}</td>
-              <td>
-                <button>Remove</button>
-              </td>
-            </tr>
-          ))}
-        </tbody>
-      </table>
+      {reviewData.map((review) => (
+        <p key={review.id}>
+          {review.name} - {review.release_date} - {review.actors.join(", ")}
+          <img
+            src={posterPrefix + review.poster}
+            alt="poster"
+            height="150"
+            width="100"
+          ></img>{" "}
+          - {review.rating} - <Checkbox checked={review.checked}/>
+        </p>
+      ))}
+      <button onClick={removeReview}>Remove Checked</button>
     </div>
   );
 }
