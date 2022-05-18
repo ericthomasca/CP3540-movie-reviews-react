@@ -10,7 +10,8 @@
             "Alex McKenna"
         ],
         "poster": "/csBulWjE442zMwu0lT0DiEcTWQK.jpg",
-        "rating": 4
+        "rating": 4,
+        "checked": false
     },
     {
         "id": 2,
@@ -24,7 +25,8 @@
             "LL Cool J"
         ],
         "poster": "/l0YBVvOvOxoOkggTZ70tNGvGQo4.jpg",
-        "rating": 3
+        "rating": 3,
+        "checked": false
     },
     {
         "id": 3,
@@ -37,7 +39,8 @@
             "Jim Carrey"
         ],
         "poster": "/pO9Edq8mgp9kD3N6EkCGYLnIVaA.jpg",
-        "rating": 4
+        "rating": 4,
+        "checked": false
     },
     {
         "id": 4,
@@ -51,7 +54,8 @@
             "Scott Thompson"
         ],
         "poster": "/82PBZXkSAAOm1qtvX3kzlec0h5C.jpg",
-        "rating": 5
+        "rating": 5,
+        "checked": false
     },
     {
         "id": 5,
@@ -64,6 +68,7 @@
             "Doris Roberts"
         ],
         "poster": "/fSRdHBtisU0zhks4OjKezI3jnt7.jpg",
-        "rating": 5
+        "rating": 5,
+        "checked": false
     }
 ]
