@@ -3,18 +3,6 @@ import reviewData from "./reviews.json";
 export function Home() {
   const posterPrefix = "https://image.tmdb.org/t/p/original";
 
-  const getIndex = (arr, prop, value) => {
-    for (var i = 0; i < arr.length; i++) {
-      if (arr[i][prop] === value) {
-        return i;
-      }
-    }
-  };
-
-  const remove = (id) => {
-    delete reviewData[getIndex(reviewData, "id", id)];
-  };
-
   return (
     <div>
       <table>
@@ -44,13 +32,7 @@ export function Home() {
               </td>
               <td>{review.rating}</td>
               <td>
-                <button
-                  onClick={
-                    delete reviewData[getIndex(reviewData, "name", review.name)]
-                  }
-                >
-                  Remove
-                </button>
+                <button>Remove</button>
               </td>
             </tr>
           ))}
@@ -95,7 +77,7 @@ export function AddReview() {
           <option value="5">5</option>
         </select>
         <br></br>
-        <input type="submit" value="Submit"></input>
+        <button>Add</button>
       </form>
     </div>
   );
