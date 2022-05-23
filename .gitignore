@@ -2,6 +2,8 @@
 
 # dependencies
 /node_modules
+/movie-reviews/node_modules
+/movie-reviews-backend/node_modules
 /.pnp
 .pnp.js
 
