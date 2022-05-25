@@ -8,7 +8,6 @@ function App({ secret: sc }) {
 
   useEffect(() => {
     const fetchData = async () => {
-      console.log("running");
       const result = await fetch("/api/data");
       const body = await result.json();
       setMovies(body);
