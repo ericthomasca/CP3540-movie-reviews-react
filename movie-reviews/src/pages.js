@@ -1,10 +1,11 @@
-import reviewData from "./reviews.json";
-
-export function Home() {
+export function Home({ movies = [], onChangeMovies = (f) => f }) {
   const posterPrefix = "https://image.tmdb.org/t/p/original";
 
+  if (movies == null || movies === undefined)
+    return <h2>No movies available</h2>;
+
   return (
-    <div>
+    <>
       <table>
         <thead>
           <tr>
@@ -13,25 +14,25 @@ export function Home() {
             <th>Actors</th>
             <th>Poster</th>
             <th>Rating</th>
-            <th>Remove?</th>
+            {/* <th>Remove?</th> */}
           </tr>
         </thead>
         <tbody>
-          {reviewData.map((review) => (
-            <tr key={review.id}>
-              <td>{review.name}</td>
-              <td>{review.release_date}</td>
-              <td>{review.actors.join(", ")}</td>
+          {movies.map((movies) => (
+            <tr key={movies._id}>
+              <td>{movies.title}</td>
+              <td>{movies.release_date}</td>
+              <td>{movies.actors.join(", ")}</td>
               <td>
                 <img
-                  src={posterPrefix + review.poster}
+                  src={posterPrefix + movies.poster}
                   alt="poster"
                   height="150"
                   width="100"
                 ></img>
               </td>
-              <td>{review.rating}</td>
-              <td>
+              <td>{movies.rating}</td>
+              {/* <td>
                 <button
                   onClick={reviewData.filter(
                     (review) => review.checked !== true
@@ -39,12 +40,12 @@ export function Home() {
                 >
                   Remove
                 </button>
-              </td>
+              </td> */}
             </tr>
           ))}
         </tbody>
       </table>
-    </div>
+    </>
   );
 }
 
