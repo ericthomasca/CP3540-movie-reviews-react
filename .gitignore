@@ -12,7 +12,6 @@
 
 # production
 /build
-/src/build
 
 # misc
 .DS_Store
@@ -26,3 +25,4 @@ yarn-debug.log*
 yarn-error.log*
 
 assignment1.md
+/movie-reviews-backend/src/build
