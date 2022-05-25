@@ -3,8 +3,6 @@ import { Routes, Route, Link } from "react-router-dom";
 import { Home, AddReview, UhOh404 } from "./pages";
 import { useState, useEffect } from "react";
 
-var movies = null;
-
 function App({ secret: sc }) {
   const [movies, setMovies] = useState(null);
 
