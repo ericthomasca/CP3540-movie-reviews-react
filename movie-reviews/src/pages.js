@@ -1,4 +1,6 @@
-export function Home({ movies = [], onChangeMovies = (f) => f }) {
+import React, { useState } from "react";
+
+export function Home({ movies = [], setMovies = (f) => f }) {
   const posterPrefix = "https://image.tmdb.org/t/p/original";
 
   if (movies == null || movies === undefined)
@@ -14,69 +16,125 @@ export function Home({ movies = [], onChangeMovies = (f) => f }) {
             <th>Actors</th>
             <th>Poster</th>
             <th>Rating</th>
-            {/* <th>Remove?</th> */}
+            <th>Remove?</th>
           </tr>
         </thead>
         <tbody>
-          {movies.map((movies) => (
-            <tr key={movies._id}>
-              <td>{movies.title}</td>
-              <td>{movies.release_date}</td>
-              <td>{movies.actors.join(", ")}</td>
+          {movies.map((movie) => (
+            <tr key={movie._id}>
+              <td>{movie.title}</td>
+              <td>{movie.release_date}</td>
+              <td>{movie.actors.join(", ")}</td>
               <td>
                 <img
-                  src={posterPrefix + movies.poster}
+                  src={posterPrefix + movie.poster}
                   alt="poster"
                   height="150"
                   width="100"
                 ></img>
               </td>
-              <td>{movies.rating}</td>
-              {/* <td>
+              <td>{movie.rating}</td>
+              <td></td>
+              <td>
                 <button
-                  onClick={reviewData.filter(
-                    (review) => review.checked !== true
-                  )}
+                  onClick={() => {
+                    const movieResult = movies.filter(
+                      (movie) => movie._id !== this.id
+                    );
+                    console.log(movieResult);
+                    setMovies(movieResult);
+                  }}
                 >
                   Remove
                 </button>
-              </td> */}
+              </td>
             </tr>
           ))}
         </tbody>
       </table>
+      <button
+        onClick={() => {
+          const movieResult = movies.filter((movie) => movie._id !== this.id);
+          console.log(movieResult);
+          setMovies(movieResult);
+        }}
+      >
+        Remove
+      </button>
     </>
   );
 }
 
-export function AddReview() {
-  const submit = (event) => {
-    event.preventDefault();
+export function AddMovie() {
+  const [title, setTitle] = useState("");
+  const [date, setDate] = useState(null);
+  const [actors, setActors] = useState(null);
+  const [poster, setPoster] = useState(null);
+  const [rating, setRating] = useState(null);
+
+  const titleUpdate = (event) => {
+    setTitle(event.target.value);
+  };
+
+  const dateUpdate = (event) => {
+    setDate(event.target.value);
+  };
+
+  const actorsUpdate = (event) => {
+    var actorArray = event.target.value.split(",");
+    setActors(actorArray);
+  };
+
+  const posterUpdate = (event) => {
+    setPoster(event.target.value);
+  };
+
+  const ratingUpdate = (event) => {
+    setRating(event.target.value);
+  };
+
+  const handleSubmit = () => {
+    fetch("/api/addMovie", {
+      method: "POST",
+      headers: {
+        Accept: "application/json",
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({
+        title: title,
+        release_date: date,
+        actors: actors,
+        poster: poster,
+        rating: rating,
+      }),
+    }).then(() => {
+      console.log("Movie has been added to the database!");
+    });
   };
 
   return (
     <div>
-      <form onSubmit={submit}>
+      <form onSubmit={handleSubmit}>
         <label>Title: </label>
         <br></br>
-        <input type="text"></input>
+        <input type="text" onChange={titleUpdate}></input>
         <br></br>
         <label>Release Date: (YYYY-MM-DD) </label>
         <br></br>
-        <input type="text"></input>
+        <input type="text" onChange={dateUpdate}></input>
         <br></br>
         <label>Actors: </label>
         <br></br>
-        <input type="text"></input>
+        <input type="text" onChange={actorsUpdate}></input>
         <br></br>
         <label>Poster: </label>
-        <select>
+        <select onChange={posterUpdate}>
           <option value="/5cZySBvy41eHTD5LyQn48aP444k.jpg">Example 1</option>
           <option value="/5mq8J11266ZL7HCOwDGXoaU6eIO.jpg">Example 2</option>
         </select>
         <br></br>
         <label>Rating: </label>
-        <select>
+        <select onChange={ratingUpdate}>
           <option value="1">1</option>
           <option value="2">2</option>
           <option value="3">3</option>
@@ -84,7 +142,7 @@ export function AddReview() {
           <option value="5">5</option>
         </select>
         <br></br>
-        <button>Add</button>
+        <button type="submit">Add Movie</button>
       </form>
     </div>
   );
