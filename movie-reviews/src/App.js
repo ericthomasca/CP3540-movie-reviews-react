@@ -1,6 +1,6 @@
 import "./App.css";
 import { Routes, Route, Link } from "react-router-dom";
-import { Home, AddReview, UhOh404 } from "./pages";
+import { Home, AddMovie, UhOh404 } from "./pages";
 import { useState, useEffect } from "react";
 
 function App({ secret: sc }) {
@@ -24,7 +24,7 @@ function App({ secret: sc }) {
       </nav>
       <Routes>
         <Route path="/" element={<Home movies={movies} setMovies={setMovies}/>} />
-        <Route path="/add" element={<AddReview />} />
+        <Route path="/add" element={<AddMovie />} />
         <Route path="*" element={<UhOh404 />} />
       </Routes>
     </>
