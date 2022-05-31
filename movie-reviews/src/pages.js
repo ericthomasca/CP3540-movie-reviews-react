@@ -3,6 +3,12 @@ import React, { useState } from "react";
 export function Home({ movies = [], setMovies = (f) => f }) {
   const posterPrefix = "https://image.tmdb.org/t/p/original";
 
+  const [isChecked, setIsChecked] = useState(false);
+
+  const checkHandler = () => {
+    setIsChecked(!isChecked);
+  };
+
   if (movies == null || movies === undefined)
     return <h2>No movies available</h2>;
 
@@ -34,19 +40,13 @@ export function Home({ movies = [], setMovies = (f) => f }) {
                 ></img>
               </td>
               <td>{movie.rating}</td>
-              <td></td>
               <td>
-                <button
-                  onClick={() => {
-                    const movieResult = movies.filter(
-                      (movie) => movie._id !== this.id
-                    );
-                    console.log(movieResult);
-                    setMovies(movieResult);
-                  }}
-                >
-                  Remove
-                </button>
+                <input
+                  type="checkbox"
+                  id="checkbox"
+                  checked={isChecked}
+                  onChange={checkHandler}
+                />
               </td>
             </tr>
           ))}
@@ -54,10 +54,7 @@ export function Home({ movies = [], setMovies = (f) => f }) {
       </table>
       <button
         onClick={() => {
-          const movieResult = movies.filter((movie) => movie._id !== this.id);
-          console.log(movieResult);
-          setMovies(movieResult);
-        }}
+          }}
       >
         Remove
       </button>
@@ -106,6 +103,7 @@ export function AddMovie() {
         actors: actors,
         poster: poster,
         rating: rating,
+        remove: false,
       }),
     }).then(() => {
       console.log("Movie has been added to the database!");
