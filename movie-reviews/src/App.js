@@ -1,7 +1,9 @@
 import "./App.css";
 import { Routes, Route, Link } from "react-router-dom";
-import { Home, AddMovie, UhOh404 } from "./pages";
 import { useState, useEffect } from "react";
+import { Home } from "./Home";
+import { AddMovie } from "./AddMovie";
+import { UhOh404 } from "./UhOh404";
 
 function App({ secret: sc }) {
   const [movies, setMovies] = useState(null);
