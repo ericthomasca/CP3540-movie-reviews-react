@@ -1,4 +1,6 @@
 import React, { useState } from "react";
+import Form from "react-bootstrap/Form";
+import Button from "react-bootstrap/Button";
 
 export function AddMovie() {
   const [title, setTitle] = useState("");
@@ -50,36 +52,47 @@ export function AddMovie() {
 
   return (
     <>
-      <form onSubmit={handleSubmit}>
-        <label>Title: </label>
+      <br></br>
+      <Form onSubmit={handleSubmit}>
+        <Form.Group className="mb-3" controlID="formTitle">
+          <Form.Label>Title</Form.Label>
+          <Form.Control
+            type="text"
+            placeholder="Enter Title"
+            onChange={titleUpdate}
+          />
+        </Form.Group>
+        <Form.Group>
+          <Form.Label>Release Date</Form.Label>
+          <Form.Control type="date" onChange={dateUpdate}></Form.Control>
+        </Form.Group>
         <br></br>
-        <input type="text" onChange={titleUpdate}></input>
+        <Form.Group>
+          <Form.Label>Actors</Form.Label>
+          <Form.Control type="text" onChange={actorsUpdate}></Form.Control>
+        </Form.Group>
         <br></br>
-        <label>Release Date: (YYYY-MM-DD) </label>
+        <Form.Group>
+          <Form.Select aria-label="Default select example" onChange={posterUpdate}>
+            <option>Select a Poster</option>
+            <option value="/5cZySBvy41eHTD5LyQn48aP444k.jpg">Poster 1</option>
+            <option value="/5mq8J11266ZL7HCOwDGXoaU6eIO.jpg">Poster 2</option>
+          </Form.Select>
+        </Form.Group>
         <br></br>
-        <input type="text" onChange={dateUpdate}></input>
+        <Form.Group>
+          <Form.Select aria-label="Default select example" onChange={ratingUpdate}>
+            <option>Rating</option>
+            <option value="1">1</option>
+            <option value="2">2</option>
+            <option value="3">3</option>
+            <option value="4">4</option>
+            <option value="5">5</option>
+          </Form.Select>
+        </Form.Group>
         <br></br>
-        <label>Actors: </label>
-        <br></br>
-        <input type="text" onChange={actorsUpdate}></input>
-        <br></br>
-        <label>Poster: </label>
-        <select onChange={posterUpdate}>
-          <option value="/5cZySBvy41eHTD5LyQn48aP444k.jpg">Example 1</option>
-          <option value="/5mq8J11266ZL7HCOwDGXoaU6eIO.jpg">Example 2</option>
-        </select>
-        <br></br>
-        <label>Rating: </label>
-        <select onChange={ratingUpdate}>
-          <option value="1">1</option>
-          <option value="2">2</option>
-          <option value="3">3</option>
-          <option value="4">4</option>
-          <option value="5">5</option>
-        </select>
-        <br></br>
-        <button type="submit">Add Movie</button>
-      </form>
+        <Button type="submit">Add Movie</Button>
+      </Form>
     </>
   );
 }

@@ -1,4 +1,6 @@
 import React, { useState } from "react";
+import Table from "react-bootstrap/Table";
+import Button from "react-bootstrap/Button";
 
 export function Home({ movies = [], setMovies = (f) => f }) {
   const posterPrefix = "https://image.tmdb.org/t/p/original";
@@ -14,7 +16,7 @@ export function Home({ movies = [], setMovies = (f) => f }) {
 
   return (
     <>
-      <table>
+      <Table striped bordered hover>
         <thead>
           <tr>
             <th>Movie</th>
@@ -51,13 +53,8 @@ export function Home({ movies = [], setMovies = (f) => f }) {
             </tr>
           ))}
         </tbody>
-      </table>
-      <button
-        onClick={() => {
-          }}
-      >
-        Remove
-      </button>
+      </Table>
+      <Button type="submit" variant="danger">Remove</Button>
     </>
   );
 }
